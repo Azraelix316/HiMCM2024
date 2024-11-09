@@ -7,36 +7,37 @@
 #include <unordered_map>
 #include <algorithm>
 #include <random>
+#include <cctype>
 using namespace std;
 int main() {
     fstream fileInput;
     //opens data file
     fileInput.open("HiMCM_Olympic_Data (1).csv",ios::in);
-    vector<double> data;
-    unordered_map<int,string> indexToSportMap;
     //data collection
-    vector<string> curr;
     string row,temp,line,col;
+    vector<vector<string>> data;
+    int rowNumber=0;
     cout << "\n\n";
-while (fileInput >> temp) {
-        if (temp.length()>0) {
-    curr.clear();
-        // read every column data of a row and
-        // store it in a string variable, 'word'
-        while (getline(fileInput, col, ','))
+    vector<string> curr;
+
+while (getline(fileInput,line,'\n')) {
+    stringstream s(line);
+        // read every column and store it into col
+        while (getline(s,col,','))
         {
-            // add all the column data
-            // of a row to a vector
+            // add all the column data into a vector
             curr.push_back(col);
             if (col.empty()) curr.push_back("0");
         }
-        //loops through and prints the data
-        //do you vector management stuff here
-        for (int i=0;i<curr.size();i++) {
-        cout << curr[i] <<" ";
+            data.push_back(curr);
+            curr.clear();
         }
-        cout << "\n";
-        }
-}
 
+cout << data.size();
+for (int i=0;i<data.size();i++) {
+for (int j=0;j<data[i].size();j++) {
+    cout << data[i][j] <<" ";
+}
+cout << "\n\n\n";
+}
 }

@@ -3,6 +3,7 @@
         "string": "cpp",
         "algorithm": "cpp",
         "vector": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "xstring": "cpp"
     }
 }
