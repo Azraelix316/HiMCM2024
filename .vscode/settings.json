@@ -4,6 +4,7 @@
         "algorithm": "cpp",
         "vector": "cpp",
         "xutility": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "locale": "cpp"
     }
 }

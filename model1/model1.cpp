@@ -6,8 +6,9 @@
 #include <cmath>
 #include <unordered_map>
 #include <algorithm>
-#include <random>
-#include <cctype>
+//#include <random>
+//#include <typeinfo>
+
 using namespace std;
 int main() {
     fstream fileInput;
@@ -26,18 +27,26 @@ while (getline(fileInput,line,'\n')) {
         while (getline(s,col,','))
         {
             // add all the column data into a vector
+            if (!col.empty()) {
             curr.push_back(col);
-            if (col.empty()) curr.push_back("0");
+            } else {
+curr.push_back("0");
+            }
         }
             data.push_back(curr);
             curr.clear();
         }
 
-cout << data.size();
 for (int i=0;i<data.size();i++) {
+if (data[i][0]=="0") {
+data[i][0]=data[i-1][0];
+}
+if (data[i][1]=="0") {
+data[i][1]=data[i][0];
+}
 for (int j=0;j<data[i].size();j++) {
     cout << data[i][j] <<" ";
 }
-cout << "\n\n\n";
+cout << "\n";
 }
 }
