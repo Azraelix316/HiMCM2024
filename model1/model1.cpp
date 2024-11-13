@@ -59,50 +59,31 @@ data[i][j]="0";
 //4th element (el 3) is when events start
 //best residuals
 double b_residuals=10000000000;
-double b_year=-1;
-//step through, calculate residuals for every year
-//store best residual and year.
-for (int year=4;year<data[0].size();year++) {
-double current_residuals=0;
+double DV=0;
+vector<vector<double>> variableOptions;
+//this loop loops through all the variable options
+for (int variableColumn=0;variableColumn<variableOptions.size();variableColumn++) {
+for (int variableSetting=0;variableSetting<variableOptions.size();variableSetting++) {
+
+//loops through all testcases/rows
 double lessAverage=0;
-double largeAverage=0;
-for (int row=1;row<data.size()-3;row++) {
-for (int col=4;col<data[row].size();col++) {
-if (col < year) {
-lessAverage+=stod(data[row][col]);
+double greaterAverage=0;
+for (float row=0;row<data.size();row++) {
+if (data[row][variableColumn]>variableOptions[i][j]) {
+lessAverage+=data[row][DV]/data.size().0;
 } else {
-largeAverage+=stod(data[row][col]);
+greaterAverage+=data[row][DV]/data.size().0;
 }
-}
-}
-cout << "RAW:" << largeAverage <<" "<<year<<" ";
-lessAverage*=(1.00/((year-4)*71));
-largeAverage*=(1.00/(71*(data[0].size()-(year))));
-cout << lessAverage <<" "<<largeAverage<< " " <<data[0].size()-4 <<" " <<1.00/(data[0].size()-4);
-for (int row=1;row<data.size()-3;row++) {
-for (int col=4;col<data[row].size();col++) {
-if (col < year) {
-current_residuals+=pow(stod(data[row][col])-lessAverage,2);
-} else {
-current_residuals+=pow(stod(data[row][col])-largeAverage,2);
-}
-}
-}
-cout << " "<<current_residuals;
-cout << "\n";
-if (current_residuals<=b_residuals) {
-b_residuals=current_residuals;
-b_year=year;
-}
-}
-cout << b_residuals << " " << b_year;
 }
 
 
-class tree {
-    tree() {
-    }
-    double computeSplittingPoint(int variableIndex) {
-    return 0;
-    }
-};
+
+
+}
+}
+}
+
+class grader() {
+ public:
+ int conditionColumn;
+}
