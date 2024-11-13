@@ -69,7 +69,8 @@ for (int variableSetting=0;variableSetting<variableOptions.size();variableSettin
 double lessAverage=0;
 double greaterAverage=0;
 for (float row=0;row<data.size();row++) {
-if (data[row][variableColumn]>variableOptions[i][j]) {
+//if data in the variable column < current add to less average, else greater 
+if (data[row][variableColumn]<variableOptions[variableColumn][variableSetting]) {
 lessAverage+=data[row][DV]/data.size().0;
 } else {
 greaterAverage+=data[row][DV]/data.size().0;
