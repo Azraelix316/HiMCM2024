@@ -7,7 +7,7 @@
 #include <unordered_map>
 #include <algorithm>
 //#include <random>
-
+double trainingSpeed=0.1;
 using namespace std;
 bool is_number(string line)
 {
@@ -17,14 +17,16 @@ bool is_number(string line)
 }
 
 double ssqr(vector<vector<double>> data, vector<double> coefficients) {
-double residuals;
+double residuals=0;
 for (int i=0;i<data.size();i++) {
     double results=0;
     for (int j=0;j<coefficients.size();j++) {
     results+=coefficients[j]*data[i][j];
     }
+    residuals+=pow(results-data[i][data[i].size()-1],2);
 }
-return 0.00;
+cout << residuals << " ";
+return residuals;
 }
 
 int main() {
@@ -52,6 +54,7 @@ curr.push_back("0");
             data.push_back(curr);
             curr.clear();
         }
+
 int yearsBeginColumn=5;
 
 for (int i=1;i<data.size();i++) {
@@ -65,14 +68,13 @@ for (int j=yearsBeginColumn;j<data[i].size();j++) {
 if (!is_number(data[i][j])) {
 data[i][j]="0";
 }
-//cout << stod(data[i][j]) << " ";
 }
 }
 
 vector<vector<double>> testcases;
 int dataBeginColumn=4;
 vector<string> years{"1896","1900","1904","1906","1908","1912","1920","1924","1928","1932","1936","1948","1952","1960","1964","1968","1972","1976","1980","1984","1988","1992","1996","2000","2004","2008","2012","2016","2020","2024","2028"};
-vector<double> coefficients;
+vector<double> coefficients{0,0};
 //ax1+bx2
 for (int row=1;row<data.size();row++) {
     for (int col=yearsBeginColumn;col<data[row].size()-1;col++) {
@@ -86,12 +88,11 @@ for (int row=1;row<data.size();row++) {
     testcases.push_back(dInput);
     }
     }
-for (int i=0;i<testcases.size();i++) {
-for (int j=0;j<testcases[i].size();j++) {
-cout << testcases[i][j] <<" ";
-}
-cout << "\n";
-}
-
-
+    double lastssqr;
+    for (int i=0;i<100;i++) {
+    for (int j=0;j<coefficients.size();j++) {
+    while (ssqr(testcases,coefficients)>ssqr(testcases,coefficients))
+    }  
+    }  
+    cout << ssqr(testcases,coefficients);
 }
