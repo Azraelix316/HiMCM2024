@@ -15,6 +15,18 @@ bool is_number(string line)
     strtol(line.c_str(), &p, 10);
     return *p == 0;
 }
+
+double ssqr(vector<vector<double>> data, vector<double> coefficients) {
+double residuals;
+for (int i=0;i<data.size();i++) {
+    double results=0;
+    for (int j=0;j<coefficients.size();j++) {
+    results+=coefficients[j]*data[i][j];
+    }
+}
+return 0.00;
+}
+
 int main() {
     fstream fileInput;
     //opens data file
@@ -40,6 +52,7 @@ curr.push_back("0");
             data.push_back(curr);
             curr.clear();
         }
+int yearsBeginColumn=5;
 
 for (int i=1;i<data.size();i++) {
 if (data[i][0]=="0") {
@@ -48,42 +61,37 @@ data[i][0]=data[i-1][0];
 if (data[i][1]=="0") {
 data[i][1]=data[i][0];
 }
-for (int j=4;j<data[i].size();j++) {
+for (int j=yearsBeginColumn;j<data[i].size();j++) {
 if (!is_number(data[i][j])) {
 data[i][j]="0";
 }
 //cout << stod(data[i][j]) << " ";
 }
-
-}
-//4th element (el 3) is when events start
-//best residuals
-double b_residuals=10000000000;
-double DV=0;
-vector<vector<double>> variableOptions;
-//this loop loops through all the variable options
-for (int variableColumn=0;variableColumn<variableOptions.size();variableColumn++) {
-for (int variableSetting=0;variableSetting<variableOptions.size();variableSetting++) {
-
-//loops through all testcases/rows
-double lessAverage=0;
-double greaterAverage=0;
-for (float row=0;row<data.size();row++) {
-if (data[row][variableColumn]>variableOptions[i][j]) {
-lessAverage+=data[row][DV]/data.size().0;
-} else {
-greaterAverage+=data[row][DV]/data.size().0;
-}
 }
 
-
-
-
+vector<vector<double>> testcases;
+int dataBeginColumn=4;
+vector<string> years{"1896","1900","1904","1906","1908","1912","1920","1924","1928","1932","1936","1948","1952","1960","1964","1968","1972","1976","1980","1984","1988","1992","1996","2000","2004","2008","2012","2016","2020","2024","2028"};
+vector<double> coefficients;
+//ax1+bx2
+for (int row=1;row<data.size();row++) {
+    for (int col=yearsBeginColumn;col<data[row].size()-1;col++) {
+    vector<string> input(data[row].begin()+dataBeginColumn,data[row].begin()+yearsBeginColumn);
+    input.push_back(years[col-yearsBeginColumn]);
+    input.push_back(data[row][col]);
+    vector<double> dInput;
+    for (auto & element : input) {
+    dInput.push_back(stod(element));
+    }    
+    testcases.push_back(dInput);
+    }
+    }
+for (int i=0;i<testcases.size();i++) {
+for (int j=0;j<testcases[i].size();j++) {
+cout << testcases[i][j] <<" ";
 }
-}
+cout << "\n";
 }
 
-class grader() {
- public:
- int conditionColumn;
+
 }
