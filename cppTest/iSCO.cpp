@@ -9,21 +9,41 @@
 #include <random>
 using namespace std;
 
-int maximum=100;
-int minimum=-100;
-int counter=0;
+float a=0;
+float b=0;
+float  counterAll=0;
+float  counterTrue=0;
+int timer=0;
 int main()
 {
-    while (true) {
- int range = maximum - minimum + 1;
-int a = rand() % range + minimum;
-int b=rand() % range + minimum;
-int c=rand() % range + minimum;
-counter++;
-if (a*b+c==100 && b*c+a==87 && c*a+b==60) {
-cout << a << b << c << "TRUE";
-cout << counter <<" ";
-}
+    while (true) {  
+srand(clock()); 
+        if (rand() % 2==1) {
+        if (rand() % 2 == 1 ) {
+        a=0;
+        }
+        if (rand() % 2 == 0 ) {
+        a=1;
+        }
+        } else {
+        a=rand()/RAND_MAX;
+        }
+        if (rand() % 2==1) {
+        if (rand() % 2 == 1 ) {
+        b=0;
+        }
+        if (rand() % 2 == 0 ) {
+        b=1;
+        }
+        } else {
+        b=rand()/RAND_MAX;
+        }
+        if (abs(a-b)>(1/2)) counterTrue++;
+        counterAll++;
+        timer++;
+        if (timer%1000==0) {
+        cout << counterTrue/counterAll << "\n";
+        }
     }
 
 }

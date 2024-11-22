@@ -76,7 +76,7 @@ data[i][j]="0";
 
 vector<vector<double>> testcases;
 vector<string> years{"1896","1900","1904","1906","1908","1912","1920","1924","1928","1932","1936","1948","1952","1960","1964","1968","1972","1976","1980","1984","1988","1992","1996","2000","2004","2008","2012","2016","2020","2024","2028"};
-vector<double> coefficients{11.2298,1.47678,1.00034,-0.270256,-66.6671,94.4298,-40.4355};
+vector<double> coefficients{17.8333,1.36276,1.02081,-0.265186,-70.805,98.5612,-47.0093};
 //ax1+bx2
 for (int row=1;row<data.size();row++) {
     for (int col=yearsBeginColumn;col<data[row].size()-1;col++) {
@@ -121,10 +121,10 @@ while (trainingSpeed>0.00001) {
         coefficients[j]+=trainingSpeed;
         trainingSpeed+=trainingSpeed*0.01;
     }  
+    } 
     cout << "\n" << ssqr(testcases,coefficients) << "\n";
     for (int i=0;i<coefficients.size();i++) {
     cout << coefficients[i]<< ",";
-    } 
     } 
     trainingSpeed=trainingSpeed/2.0;
     cout << "\n"<< "Training Speed:" << trainingSpeed << "\n";
