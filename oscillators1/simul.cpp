@@ -1,3 +1,4 @@
+//used for initial HiMCM training
 #include <iostream>
 #include <vector>
 #include <string>
